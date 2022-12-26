@@ -4,13 +4,15 @@ import React from 'react'
 import { styles } from '../theme/appTheme'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import usePokePage from '../hooks/usePokePage'
+import { FadeInImage } from '../components/FadeInImage'
+import PokemonCard from '../components/PokemonCard'
 
 const HomeScreen = () => {
 
     const {top} = useSafeAreaInsets()
 
     const {simplePoke, fetchPokes} = usePokePage()
-    console.log(simplePoke)
+    // console.log(simplePoke)
 
   return (
     <>
@@ -19,19 +21,32 @@ const HomeScreen = () => {
         source={require('../assets/pokebola.png')}
       />
 
-    <View style={styles.globalMargin}>
+    <View style={{
+      ...styles.globalMargin,
+      alignItems: 'center'
+      }}>
 
       <FlatList
         data={simplePoke}
         keyExtractor={ (poke) => poke.id}
         renderItem={ ({item}) => (
-        
-          <Image
-            source={{ uri: item.picture}}
-            style={{ width: 100, height: 100}}
-          />
+              <PokemonCard pokemon={item}/>
           )}
+        
+        // header
+        ListHeaderComponent={ (
+          <Text style={{
+            ...styles.title,
+            ...styles.globalMargin,
+            top: top + 20,
+            marginBottom: top + 20
+          }}>
+            PokeDex
+          </Text>
+        ) }
+
         showsVerticalScrollIndicator={false}
+        numColumns={ 2 }
         // infinity scroll
 
         onEndReached={ fetchPokes }
@@ -41,11 +56,7 @@ const HomeScreen = () => {
       />
       
     </View>
-      {/* <Text style={ {
-        ...styles.title,
-        top: top + 20
-        }}>Poke Dex</Text> */}
-
+    
     </>
   )
 }
