@@ -1,14 +1,19 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react'
+import { SimplePokemon } from '../interfaces/pokeInterface';
 import HomeScreen from '../screens/HomeScreen';
 import PokemonScreen from '../screens/PokemonScreen';
 
-const Stack = createStackNavigator();
+export type RooStackParams = {
+    HomeScreen: undefined,
+    PokemonScreen: { simplePokemon: SimplePokemon, color: string}
+} 
+
+const Stack = createStackNavigator<RooStackParams>();
 
 const Navigation = () => {
     return (
         <Stack.Navigator
-        initialRouteName="Home"
         screenOptions={{
             headerShown: false,
             // cardStyle: {
