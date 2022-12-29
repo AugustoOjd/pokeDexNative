@@ -25,7 +25,7 @@ const PokemonDetails = ({ pokemon }: Props ) => {
                 marginTop: 370
             }}>
                 <Text style={ styles.title }>Types</Text>
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
                 {
                     pokemon.types.map( ({ type }) => (
                         <PokeTypeCard type={type.name } key={type.name}/>
@@ -35,7 +35,7 @@ const PokemonDetails = ({ pokemon }: Props ) => {
 
                 {/* Peso */}
                 <Text style={ styles.title }>Peso</Text>
-                <Text style={ styles.regularText }>{ pokemon.weight }kg</Text>
+                <Text style={ styles.regularText }>{ pokemon.weight } lbs</Text>
 
             </View>
 
@@ -74,7 +74,7 @@ const PokemonDetails = ({ pokemon }: Props ) => {
             {/* Habilidades */}
             <View style={ styles.container }>
                 <Text style={ styles.title }>Habilidades base</Text>
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
                 {
                     pokemon.abilities.map( ({ ability }) => (
                         <PokeTypeCard type={ ability.name } key={ability.name} />
