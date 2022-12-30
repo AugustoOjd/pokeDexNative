@@ -7,11 +7,12 @@ import PokemonScreen from '../screens/PokemonScreen';
 export type RooStackParams = {
     HomeScreen: undefined,
     PokemonScreen: { simplePokemon: SimplePokemon, color: string}
+    SearchScreen: undefined
 } 
 
 const Stack = createStackNavigator<RooStackParams>();
 
-const Navigation = () => {
+const Tab1 = () => {
     return (
         <Stack.Navigator
         screenOptions={{
@@ -28,4 +29,4 @@ const Navigation = () => {
     )
 }
 
-export default Navigation
+export default Tab1

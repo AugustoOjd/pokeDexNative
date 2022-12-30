@@ -1,13 +1,28 @@
 import { StyleSheet, Text, View, StyleProp, ViewStyle } from 'react-native';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { useDebouncedValue } from '../hooks/useDebouncedValue';
 
 interface Props {
+    onDebounce: (value: string) => void
     style?: StyleProp<ViewStyle>
 }
 
-const SearchInput = ({ style  }:Props) => {
+const SearchInput = ({ style, onDebounce }:Props) => {
+
+    const [textValue, setTextValue] = useState('')
+
+    // console.log(textValue)
+    const debounceValue = useDebouncedValue( textValue )
+
+    useEffect(() => {
+      
+        onDebounce(debounceValue)
+      
+    }, [debounceValue])
+    
+
   return (
     <View style={{
         ...styles.container,
@@ -20,7 +35,8 @@ const SearchInput = ({ style  }:Props) => {
                 autoCapitalize='none'
                 autoCorrect={false}
                 style={ styles.textInput}
-
+                value={textValue}
+                onChangeText={ setTextValue }
             />
 
             <Icon 

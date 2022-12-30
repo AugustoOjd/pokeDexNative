@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import React from 'react'
 import { StackScreenProps } from '@react-navigation/stack'
-import { RooStackParams } from '../Navigation/Navigation'
+import { RooStackParams } from '../Navigation/Tab1'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
